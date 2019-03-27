@@ -1,5 +1,5 @@
-require 'watir'
-require 'headless'
+# require 'watir'
+# require 'headless'
 # Note: Headless doesn't work on MacOS
 #       Run XQuartz before trying Headless on MacOS
 require 'page-object'
@@ -111,15 +111,17 @@ RSpec.configure do |config|
   config.add_formatter(:progress) if config.formatters.empty?
   config.add_formatter(Watir::RSpec::HtmlFormatter)
 
+  config.include PageObject::PageFactory
+  
   # Open up the browser for each example.
-  config.before :all, type: :request do
-    @browser = Watir::Browser.new
-  end
+  # config.before :all, type: :request do
+  #   @browser = Watir::Browser.new
+  # end
 
-  # Close that browser after each example.
-  config.after :all, type: :request do
-    @browser.close if @browser
-  end
+  # # Close that browser after each example.
+  # config.after :all, type: :request do
+  #   @browser.close if @browser
+  # end
 
   # Include RSpec::Helper into each of your example group for making it possible to
   # write in your examples instead of:

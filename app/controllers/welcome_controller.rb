@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    # puts "URL: #{Rails.configuration.app_config.app_url}"
     @cronuts_url = params[:cronuts_url]
     @cronuts_url ||= "https://upload.wikimedia.org/wikipedia/commons/8/8b/April_2016_Cronut%C2%AE_2_Burnt_Vanilla_Caramel_-_photo_by_Dominique_Ansel_Bakery.jpg"
     @donuts_url = params[:donuts_url]
