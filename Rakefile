@@ -2,5 +2,13 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative 'config/application'
-
 Rails.application.load_tasks
+
+task :default do
+  puts `rake -T`
+end
+
+desc 'Run Tests'
+task :spec do
+  sh 'rspec --pattern "spec/*_spec.rb" --format doc'
+end
