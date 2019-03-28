@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# WelcomeController
+# WelcomeController for the Welcome view
 class WelcomeController < ApplicationController
   # Renders welcome page
   def index
