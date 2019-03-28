@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WelcomePageElements
+class WelcomePage
   include PageObject
   h1(:welcome_title, id: 'welcome_title')
   a(:cronut_link, id: 'cronut_link')
@@ -13,13 +13,21 @@ class WelcomePageElements
   def default_donut_link_value
     'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Glazed-Donut.jpg/250px-Glazed-Donut.jpg'
   end
+
+  def custom_cronut_link_value
+    nil
+  end
+
+  def custom_donut_link_value
+    nil
+  end
 end
 
-class DefaultWelcomePage < WelcomePageElements
+class DefaultWelcomePage < WelcomePage
   page_url 'http://localhost:3000'
 end
 
-class CustomCronutWelcomePage < WelcomePageElements
+class CustomCronutWelcomePage < WelcomePage
   page_url 'http://localhost:3000?cronuts_url=https://google.com'
 
   def custom_cronut_link_value
@@ -27,7 +35,7 @@ class CustomCronutWelcomePage < WelcomePageElements
   end
 end
 
-class CustomDonutWelcomePage < WelcomePageElements
+class CustomDonutWelcomePage < WelcomePage
   page_url 'http://localhost:3000?donuts_url=https://4chan.org'
 
   def custom_donut_link_value
@@ -35,7 +43,7 @@ class CustomDonutWelcomePage < WelcomePageElements
   end
 end
 
-class CustomCronutDonutWelcomePage < WelcomePageElements
+class CustomCronutDonutWelcomePage < WelcomePage
   page_url 'http://localhost:3000?cronuts_url=https://stackoverflow.com&donuts_url=https://stellar.org'
 
   def custom_cronut_link_value
