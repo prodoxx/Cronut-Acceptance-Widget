@@ -55,7 +55,7 @@ RSpec.describe 'WelcomePage' do
        # GIVEN: user is on the welcome page with only custom cronut link provided
        visit CustomCronutWelcomePage do |page|
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).not_to eq 'https://oblip.com' # it should be https://google.com
+        expect(page.cronut_link_element.href).not_to eq 'https://oblip.com' # it should be https://google.com/
         expect(page.donut_link_element).to be_present
         expect(page.donut_link_element.href).to eq page.donut_link_value # default value
        end
@@ -65,25 +65,51 @@ RSpec.describe 'WelcomePage' do
   describe 'Custom Donut Link Welcome Page' do
     it '(HAPPY) should see that only the donut link changed from the default' do
       # GIVEN: user is on the welcome page with only a custom donut link provided changed
-      visit CustomCronutWelcomePage do |page|
-        # THEN: user should see a Welcome! message and the cronut link pointing to https://google.com
+      visit CustomDonutWelcomePage do |page|
+        # THEN: user should see a Welcome! message and the donut link pointing to https://4chan.org/
         # ALSO: the cronut link should remain as the default value
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).to eq page.cronut_link_value # default value
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # 'https://4chan.org'
+        expect(page.donut_link_element.href).to eq page.donut_link_value # https://4chan.org/
       end
     end
 
     it '(SAD) should confirm that the donut link is not pointing to https://oblip.com' do
-       # GIVEN: user is on the welcome page with only custom cronut link provided
-       visit CustomCronutWelcomePage do |page|
+       # GIVEN: user is on the welcome page with only custom donut link provided
+       visit CustomDonutWelcomePage do |page|
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).to eq page.cronut_link_value # default value
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).not_to eq 'https://oblip.com' # it should be https://4chan.org
+        expect(page.donut_link_element.href).not_to eq 'https://oblip.com' # it should be https://4chan.org/
+       end
+    end
+  end
+
+  describe 'Custom Cronut and Donut Link Welcome Page' do
+    it '(HAPPY) should see that both the cronut and the donut link changed from the default' do
+      # GIVEN: user is on the welcome page with both custom cronut and donut link provided changed
+      visit CustomCronutDonutWelcomePage do |page|
+        # THEN: user should see a Welcome! message and the cronut link pointing to https://stackoverflow.com/
+        # ALSO: the donut be pointing to https://stellar.org
+        expect(page.welcome_title_element).to be_present
+        expect(page.welcome_title).to eq 'Welcome!'
+        expect(page.cronut_link_element).to be_present
+        expect(page.cronut_link_element.href).to eq page.cronut_link_value # https://stellar.org/
+        expect(page.donut_link_element).to be_present
+        expect(page.donut_link_element.href).to eq page.donut_link_value # https://4chan.org/
+      end
+    end
+
+    it '(SAD) should confirm that the cronut and donut link is not pointing anything but the custom links' do
+       # GIVEN: user is on the welcome page with only custom cronut link provided
+       visit CustomCronutWelcomePage do |page|
+        expect(page.cronut_link_element).to be_present
+        expect(page.cronut_link_element.href).not_to eq 'https://instagram.com' # it should be https://stackoverflow.com/
+        expect(page.donut_link_element).to be_present
+        expect(page.donut_link_element.href).not_to eq 'https://github.com' # it should be https://stellar.org/
        end
     end
   end

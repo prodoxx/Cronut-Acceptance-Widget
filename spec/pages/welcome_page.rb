@@ -28,10 +28,10 @@ class CustomCronutWelcomePage < WelcomePageElements
 end
 
 class CustomDonutWelcomePage < WelcomePageElements
-  page_url 'http://localhost:3000?donuts_url=https://google.com'
+  page_url 'http://localhost:3000?donuts_url=https://4chan.org'
 
   def donut_link_value
-    'https://4chan.org'
+    'https://4chan.org/'
   end
 end
 
@@ -39,10 +39,10 @@ class CustomCronutDonutWelcomePage < WelcomePageElements
   page_url 'http://localhost:3000?cronuts_url=https://stackoverflow.com&donuts_url=https://stellar.org'
 
   def cronut_link_value
-    'https://stackoverflow.com'
+    'https://stackoverflow.com/'
   end
 
   def donut_link_value
-    'https://stellar.org'
+    'https://stellar.org/'
   end
 end
