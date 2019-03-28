@@ -28,6 +28,8 @@ RSpec.describe 'WelcomePage' do
     it '(SAD) should check if both default cronuts and donut link are not changed' do
       # GIVEN: user is on the welcome page with the default Cronut acceptance widget
       visit DefaultWelcomePage do |page|
+        # THEN: user should see the cronut link pointing to default link
+        # ALSO: the donut link pointing to default link
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).not_to eq 'https://oblip.com'
         expect(page.donut_link_element).to be_present
@@ -54,6 +56,8 @@ RSpec.describe 'WelcomePage' do
     it '(SAD) should confirm that the cronut link is not pointing to default link' do
        # GIVEN: user is on the welcome page with only custom cronut link provided
        visit CustomCronutWelcomePage do |page|
+        # THEN: user should see the cronut link not pointing to default link
+        # ALSO: the donut link pointing to default link
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).not_to eq page.default_cronut_link_value # it should be https://google.com/
         expect(page.donut_link_element).to be_present
@@ -80,6 +84,8 @@ RSpec.describe 'WelcomePage' do
     it '(SAD) should confirm that the donut link is not pointing to default link' do
        # GIVEN: user is on the welcome page with only custom donut link provided
        visit CustomDonutWelcomePage do |page|
+        # THEN: user should see the donut link not pointing to default link
+        # ALSO: the cronut link pointing to default link
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).to eq page.default_cronut_link_value # default value
         expect(page.donut_link_element).to be_present
@@ -106,6 +112,8 @@ RSpec.describe 'WelcomePage' do
     it '(SAD) should confirm that the cronut and donut link is not pointing default links' do
        # GIVEN: user is on the welcome page with only custom cronut link provided
        visit CustomCronutDonutWelcomePage do |page|
+        # THEN: user should see the cronut link not pointing to default link
+        # ALSO: the donut link not pointing to default link
         expect(page.cronut_link_element).to be_present
         expect(page.cronut_link_element.href).not_to eq page.default_cronut_link_value # it should be https://stackoverflow.com/
         expect(page.donut_link_element).to be_present
