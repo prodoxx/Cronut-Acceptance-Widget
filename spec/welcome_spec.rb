@@ -41,6 +41,7 @@ RSpec.describe 'WelcomePage' do
       # GIVEN: user is on the welcome page with the only custom cronut link provided
       visit CustomCronutWelcomePage do |page|
         # THEN: user should see a Welcome! message and the cronut link pointing to https://google.com
+        # ALSO: the donut link should remain as the default value
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present

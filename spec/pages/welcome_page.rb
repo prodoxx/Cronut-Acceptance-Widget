@@ -26,3 +26,11 @@ class CustomCronutWelcomePage < WelcomePageElements
     'https://google.com/'
   end
 end
+
+class CustomDonutWelcomePage < WelcomePageElements
+  page_url 'http://localhost:3000?donuts_url=https://google.com'
+
+  def donut_link_value
+    'https://4chan.org'
+  end
+end
