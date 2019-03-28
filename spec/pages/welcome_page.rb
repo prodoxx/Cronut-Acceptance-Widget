@@ -34,3 +34,15 @@ class CustomDonutWelcomePage < WelcomePageElements
     'https://4chan.org'
   end
 end
+
+class CustomCronutDonutWelcomePage < WelcomePageElements
+  page_url 'http://localhost:3000?cronuts_url=https://stackoverflow.com&donuts_url=https://stellar.org'
+
+  def cronut_link_value
+    'https://stackoverflow.com'
+  end
+
+  def donut_link_value
+    'https://stellar.org'
+  end
+end
