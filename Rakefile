@@ -12,3 +12,22 @@ desc 'Run Tests'
 task :spec do
   sh 'rspec --pattern "spec/*_spec.rb" --format doc'
 end
+
+namespace :quality do
+  CODE = '**/*.rb'
+
+  desc 'Run all quality checks'
+  task all: %i[rubocop reek flog]
+
+  task :rubocop do
+    sh "rubocop #{CODE}"
+  end
+
+  task :reek do
+    sh "reek #{CODE}"
+  end
+
+  task :flog do
+    sh "flog #{CODE}"
+  end
+end
