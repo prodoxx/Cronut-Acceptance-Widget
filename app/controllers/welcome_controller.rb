@@ -7,6 +7,6 @@ class WelcomeController < ApplicationController
     @donuts_url = params[:donuts_url]
     @donuts_url ||= 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Glazed-Donut.jpg/250px-Glazed-Donut.jpg'
     @agreement_text = I18n.t('welcome.index.super_terms_html',
-      cronuts_url: @cronuts_url, donuts_url: @donuts_url).html_safe
+      cronuts_url: @cronuts_url.dump, donuts_url: @donuts_url.dump).html_safe
   end
 end
