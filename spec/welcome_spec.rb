@@ -19,9 +19,9 @@ RSpec.describe 'WelcomePage' do
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).to eq page.cronut_link_value # default value
+        expect(page.cronut_link_element.href).to eq page.default_cronut_link_value # default value
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # default value
+        expect(page.donut_link_element.href).to eq page.default_donut_link_value # default value
       end
     end
 
@@ -45,19 +45,19 @@ RSpec.describe 'WelcomePage' do
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).to eq page.cronut_link_value # https://google.com
+        expect(page.cronut_link_element.href).to eq page.custom_cronut_link_value # https://google.com
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # default value
+        expect(page.donut_link_element.href).to eq page.default_donut_link_value # default value
       end
     end
 
-    it '(SAD) should confirm that the cronut link is not pointing to https://oblip.com' do
+    it '(SAD) should confirm that the cronut link is not pointing to default link' do
        # GIVEN: user is on the welcome page with only custom cronut link provided
        visit CustomCronutWelcomePage do |page|
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).not_to eq 'https://oblip.com' # it should be https://google.com/
+        expect(page.cronut_link_element.href).not_to eq page.default_cronut_link_value # it should be https://google.com/
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # default value
+        expect(page.donut_link_element.href).to eq page.default_donut_link_value # default value
        end
     end
   end
@@ -71,19 +71,19 @@ RSpec.describe 'WelcomePage' do
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).to eq page.cronut_link_value # default value
+        expect(page.cronut_link_element.href).to eq page.default_cronut_link_value # default value
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # https://4chan.org/
+        expect(page.donut_link_element.href).to eq page.custom_donut_link_value # https://4chan.org/
       end
     end
 
-    it '(SAD) should confirm that the donut link is not pointing to https://oblip.com' do
+    it '(SAD) should confirm that the donut link is not pointing to default link' do
        # GIVEN: user is on the welcome page with only custom donut link provided
        visit CustomDonutWelcomePage do |page|
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).to eq page.cronut_link_value # default value
+        expect(page.cronut_link_element.href).to eq page.default_cronut_link_value # default value
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).not_to eq 'https://oblip.com' # it should be https://4chan.org/
+        expect(page.donut_link_element.href).not_to eq page.default_donut_link_value # it should be https://4chan.org/
        end
     end
   end
@@ -97,19 +97,19 @@ RSpec.describe 'WelcomePage' do
         expect(page.welcome_title_element).to be_present
         expect(page.welcome_title).to eq 'Welcome!'
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).to eq page.cronut_link_value # https://stellar.org/
+        expect(page.cronut_link_element.href).to eq page.custom_cronut_link_value # https://stellar.org/
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).to eq page.donut_link_value # https://4chan.org/
+        expect(page.donut_link_element.href).to eq page.custom_donut_link_value # https://4chan.org/
       end
     end
 
-    it '(SAD) should confirm that the cronut and donut link is not pointing anything but the custom links' do
+    it '(SAD) should confirm that the cronut and donut link is not pointing default links' do
        # GIVEN: user is on the welcome page with only custom cronut link provided
-       visit CustomCronutWelcomePage do |page|
+       visit CustomCronutDonutWelcomePage do |page|
         expect(page.cronut_link_element).to be_present
-        expect(page.cronut_link_element.href).not_to eq 'https://instagram.com' # it should be https://stackoverflow.com/
+        expect(page.cronut_link_element.href).not_to eq page.default_cronut_link_value # it should be https://stackoverflow.com/
         expect(page.donut_link_element).to be_present
-        expect(page.donut_link_element.href).not_to eq 'https://github.com' # it should be https://stellar.org/
+        expect(page.donut_link_element.href).not_to eq page.default_donut_link_value # it should be https://stellar.org/
        end
     end
   end
