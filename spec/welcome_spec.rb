@@ -7,11 +7,13 @@ RSpec.describe 'WelcomePage' do
   before do
     unless @browser
       @browser = Watir::Browser.new
+      # @headless = Headless.new
     end
   end
 
   after do
     @browser.close
+    # @headless.destroy
   end
 
   describe 'Default Welcome Page' do
