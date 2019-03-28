@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
+# WelcomeController
 class WelcomeController < ApplicationController
+  # Renders welcome page
   def index
-    # puts "URL: #{Rails.configuration.app_config.app_url}"
-    # puts "URL: #{OverrideMe::Application.config.app_url}"
     @cronuts_url = params[:cronuts_url]
     @cronuts_url ||= 'https://upload.wikimedia.org/wikipedia/commons/8/8b/April_2016_Cronut%C2%AE_2_Burnt_Vanilla_Caramel_-_photo_by_Dominique_Ansel_Bakery.jpg'
     @donuts_url = params[:donuts_url]
     @donuts_url ||= 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Glazed-Donut.jpg/250px-Glazed-Donut.jpg'
     @agreement_text = I18n.t('welcome.index.super_terms_html',
-      cronuts_url: @cronuts_url.dump, donuts_url: @donuts_url.dump).html_safe
+        cronuts_url: @cronuts_url.dump,
+        donuts_url: @donuts_url.dump).html_safe
   end
 end
