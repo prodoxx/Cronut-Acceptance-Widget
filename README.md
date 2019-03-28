@@ -4,9 +4,28 @@
 2. Start up the server: `$ bin/rails s`
 3. Visit the root page and follow the instructions
 
+## Usage
+
+You can change the link for the cornuts and donuts by adding a query string parameter to the url for example:
+
+```
+http://localhost:3000?cornuts_url=https://google.com
+```
+
+ or
+
+ ```
+ https://localhost:3000?donuts_url=https://oblip.com
+ ```
+ or add both like this:
+
+ ```
+ https://localhost:3000?cornuts_url=https://google.com&donuts_url=https://oblip.com
+ ```
+ 
 ## Test
 
-To this that the challenge was solved run the command:
+To check that the challenge was solved run the command:
 
 ```
 rake spec
