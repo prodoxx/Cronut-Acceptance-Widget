@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative 'rails_helper'
+require_relative 'pages/welcome_page.rb'
+
 RSpec.describe 'WelcomePage' do
   before do
     unless @browser
